@@ -1,0 +1,7 @@
+.center
+{
+     /*This is same as Countdown width in your javascript*/
+    margin: 0 auto;          
+    text-align:center;
+}
+
