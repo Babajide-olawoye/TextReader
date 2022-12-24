@@ -7,13 +7,22 @@ import './SpeechStyle.css'
 function Speech() {
     const [inputtText, setInputText, inputtTextRef] = useStateRef("")
     const { speak } = useSpeechSynthesis();
+    const [file, setFile, fileRef] = useStateRef([])
 
 
 
     const read = (text) => {
+        console.log(text)
         fetch(text)
             .then(res => res.text())
             .then(res => speak({text : res}));
+    }
+
+    const getFile = (e) => {
+        e.preventDefault();
+        
+        setFile(URL.createObjectURL(e.target.files[0]));
+
     }
 
     return (
@@ -39,7 +48,8 @@ function Speech() {
                 <button onClick={() => read(random)}>Read Text 1 from file</button>
            </div>
            <div>
-            {/* <input type={'file'} /> */}
+            <input type={'file'} onChange={(e) =>{getFile(e)}}/>
+            <button onClick={() => {read(fileRef.current)}}>Read file</button>
            </div>
         </div>
     )
