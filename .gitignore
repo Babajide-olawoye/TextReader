@@ -12,7 +12,7 @@
 /build
 
 #text files
-/texts
+Random*
 
 # misc
 .DS_Store
